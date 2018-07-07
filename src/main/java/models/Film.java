@@ -13,15 +13,17 @@ public class Film {
     private Genre genre;//Enum?
     private Rating rating; //Enum?
     private Director director;
+    private Studio studio;
 
     public Film() {
     }
 
-    public Film(String title, Genre genre, Rating rating, Director director) {
+    public Film(String title, Genre genre, Rating rating, Director director, Studio studio) {
         this.title = title;
         this.genre = genre;
         this.rating = rating;
         this.director = director;
+        this.studio = studio;
 
     }
 
@@ -71,5 +73,15 @@ public class Film {
 
     public void setDirector(Director director) {
         this.director = director;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="studio_id", nullable=false)
+    public Studio getStudio() {
+        return studio;
+    }
+
+    public void setStudio(Studio studio) {
+        this.studio = studio;
     }
 }

@@ -1,12 +1,11 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "studios")
 public class Studio {
 
     private int id;
@@ -23,6 +22,7 @@ public class Studio {
         this.budget = budget;
         this.films = new ArrayList<Film>();
         this.directors = new ArrayList<Director>();
+
     }
 
     @Id
@@ -53,6 +53,7 @@ public class Studio {
         this.budget = budget;
     }
 
+    @OneToMany(mappedBy="studio", fetch = FetchType.LAZY)
     public List<Film> getFilms() {
         return films;
     }
@@ -61,11 +62,4 @@ public class Studio {
         this.films = films;
     }
 
-    public List<Director> getDirectors() {
-        return directors;
-    }
-
-    public void setDirectors(List<Director> directors) {
-        this.directors = directors;
-    }
 }

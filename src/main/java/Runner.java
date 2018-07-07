@@ -18,21 +18,24 @@ public class Runner {
         Director director5 = new Director("Stanley Kubrick", "close-up of a character's face");
         DBHelper.save(director5);
 
-        Film film1 = new Film("Pulp Fiction", Genre.CRIME, Rating.EIGHTEEN, director1);
+        Studio studio = new Studio("Sony Pictures", 500000);
+        DBHelper.save(studio);
+
+        Film film1 = new Film("Pulp Fiction", Genre.CRIME, Rating.EIGHTEEN, director1, studio);
         DBHelper.save(film1);
-        Film film2 = new Film("Django Unchained", Genre.DRAMA, Rating.EIGHTEEN, director1);
+        Film film2 = new Film("Django Unchained", Genre.DRAMA, Rating.EIGHTEEN, director1, studio);
         DBHelper.save(film2);
-        Film film3 = new Film("Fantastic Mr Fox", Genre.ADVENTURE, Rating.PG, director3);
+        Film film3 = new Film("Fantastic Mr Fox", Genre.ADVENTURE, Rating.PG, director3, studio);
         DBHelper.save(film3);
-        Film film4 = new Film("Isle of Dogs", Genre.DRAMA, Rating.PG, director3);
+        Film film4 = new Film("Isle of Dogs", Genre.DRAMA, Rating.PG, director3, studio);
         DBHelper.save(film4);
-        Film film5 = new Film("The Departed", Genre.CRIME, Rating.EIGHTEEN, director2);
+        Film film5 = new Film("The Departed", Genre.CRIME, Rating.EIGHTEEN, director2, studio);
         DBHelper.save(film5);
-        Film film6 = new Film("Shutter Island", Genre.THRILLER, Rating.EIGHTEEN, director2);
+        Film film6 = new Film("Shutter Island", Genre.THRILLER, Rating.EIGHTEEN, director2, studio);
         DBHelper.save(film6);
-        Film film7 = new Film("Jurassic Park", Genre.FANTASY, Rating.FIFTHTEEN, director4);
+        Film film7 = new Film("Jurassic Park", Genre.FANTASY, Rating.FIFTHTEEN, director4, studio);
         DBHelper.save(film7);
-        Film film8 = new Film("Ready Player One", Genre.FANTASY, Rating.TWELVE, director4);
+        Film film8 = new Film("Ready Player One", Genre.FANTASY, Rating.TWELVE, director4, studio);
         DBHelper.save(film8);
 
         Actor actor1 = new Actor("John Travolta", 15000);
