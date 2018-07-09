@@ -1,3 +1,4 @@
+import db.DBDirector;
 import db.DBFilm;
 import db.DBHelper;
 import models.*;
@@ -72,6 +73,7 @@ public class Runner {
         DBFilm.addStarToFilm(actress1, film1);
 
         List<Star> filmsStarIsIn = DBFilm.getStarsOfFilms(film1);
+        List<Film> ListOfFilmsofDirector = DBDirector.getListOfFilms(director1);
 
     }
 }
