@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +63,23 @@ public abstract class Star {
 
     public void setPay(int pay) {
         this.pay = pay;
+    }
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(name = "film_stars",
+            joinColumns = {@JoinColumn(name = "star_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)})
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
+    }
+
+    public void addFilm(Film film){
+        this.films.add(film);
     }
 }
 

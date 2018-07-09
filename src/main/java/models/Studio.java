@@ -62,4 +62,9 @@ public class Studio {
         this.films = films;
     }
 
+//    public void payStar(Star star) {
+//        int amount = star.getPay();
+//        this.budget -= amount;
+//        star.setWallet(amount);
+//    }
 }

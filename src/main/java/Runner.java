@@ -1,3 +1,4 @@
+import db.DBFilm;
 import db.DBHelper;
 import models.*;
 
@@ -18,24 +19,28 @@ public class Runner {
         Director director5 = new Director("Stanley Kubrick", "close-up of a character's face");
         DBHelper.save(director5);
 
-        Studio studio = new Studio("Sony Pictures", 500000);
-        DBHelper.save(studio);
+        Studio studio1 = new Studio("Sony Pictures", 500000);
+        DBHelper.save(studio1);
+        Studio studio2 = new Studio("Fox", 500000);
+        DBHelper.save(studio2);
+        Studio studio3 = new Studio("Paramount", 500000);
+        DBHelper.save(studio3);
 
-        Film film1 = new Film("Pulp Fiction", Genre.CRIME, Rating.EIGHTEEN, director1, studio);
+        Film film1 = new Film("Pulp Fiction", Genre.CRIME, Rating.EIGHTEEN, director1, studio1);
         DBHelper.save(film1);
-        Film film2 = new Film("Django Unchained", Genre.DRAMA, Rating.EIGHTEEN, director1, studio);
+        Film film2 = new Film("Django Unchained", Genre.DRAMA, Rating.EIGHTEEN, director1, studio2);
         DBHelper.save(film2);
-        Film film3 = new Film("Fantastic Mr Fox", Genre.ADVENTURE, Rating.PG, director3, studio);
+        Film film3 = new Film("Fantastic Mr Fox", Genre.ADVENTURE, Rating.PG, director3, studio3);
         DBHelper.save(film3);
-        Film film4 = new Film("Isle of Dogs", Genre.DRAMA, Rating.PG, director3, studio);
+        Film film4 = new Film("Isle of Dogs", Genre.DRAMA, Rating.PG, director3, studio1);
         DBHelper.save(film4);
-        Film film5 = new Film("The Departed", Genre.CRIME, Rating.EIGHTEEN, director2, studio);
+        Film film5 = new Film("The Departed", Genre.CRIME, Rating.EIGHTEEN, director2, studio2);
         DBHelper.save(film5);
-        Film film6 = new Film("Shutter Island", Genre.THRILLER, Rating.EIGHTEEN, director2, studio);
+        Film film6 = new Film("Shutter Island", Genre.THRILLER, Rating.EIGHTEEN, director2, studio3);
         DBHelper.save(film6);
-        Film film7 = new Film("Jurassic Park", Genre.FANTASY, Rating.FIFTHTEEN, director4, studio);
+        Film film7 = new Film("Jurassic Park", Genre.FANTASY, Rating.FIFTHTEEN, director4, studio1);
         DBHelper.save(film7);
-        Film film8 = new Film("Ready Player One", Genre.FANTASY, Rating.TWELVE, director4, studio);
+        Film film8 = new Film("Ready Player One", Genre.FANTASY, Rating.TWELVE, director4, studio3);
         DBHelper.save(film8);
 
         Actor actor1 = new Actor("John Travolta", 15000);
@@ -62,6 +67,11 @@ public class Runner {
         List<Director> allDirectors = DBHelper.getAll(Director.class);
         List<Actor> allActors = DBHelper.getAll(Actor.class);
         List<Actress> allActresses = DBHelper.getAll(Actress.class);
+
+        DBFilm.addStarToFilm(actor1, film1);
+        DBFilm.addStarToFilm(actress1, film1);
+
+        List<Star> filmsStarIsIn = DBFilm.getStarsOfFilms(film1);
 
     }
 }

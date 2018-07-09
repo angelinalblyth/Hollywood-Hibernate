@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ public class Film {
     private Rating rating; //Enum?
     private Director director;
     private Studio studio;
+    private List<Star> stars;
 
     public Film() {
     }
@@ -24,6 +27,7 @@ public class Film {
         this.rating = rating;
         this.director = director;
         this.studio = studio;
+        this.stars = new ArrayList<Star>();
 
     }
 
@@ -83,5 +87,22 @@ public class Film {
 
     public void setStudio(Studio studio) {
         this.studio = studio;
+    }
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(name = "film_stars",
+            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "star_id", nullable = false, updatable = false)})
+    public List<Star> getStars() {
+        return stars;
+    }
+
+    public void setStars(List<Star> stars) {
+        this.stars = stars;
+    }
+
+    public void addStar(Star star){
+        this.stars.add(star);
     }
 }
