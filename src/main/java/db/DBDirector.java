@@ -21,12 +21,11 @@ public class DBDirector {
         List<Film> results = null;
         session = HibernateUtil.getSessionFactory().openSession();
         try {
-            Criteria cr = session.createCriteria(Director.class);
-            cr.createAlias("directors", "director"); // ADDED
-            cr.add(Restrictions.eq("director.id", director.getId())); // ADDED
-            results = cr.list();
-        } catch (HibernateException ex) {
-            ex.printStackTrace();
+            Criteria cr = session.createCriteria(Film.class);
+            cr.add(Restrictions.eq("director", director));
+            results =  cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
         } finally {
             session.close();
         }
