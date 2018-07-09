@@ -74,6 +74,5 @@ public class Runner {
 
         List<Star> filmsStarIsIn = DBFilm.getStarsOfFilms(film1);
         List<Film> ListOfFilmsofDirector = DBDirector.getListOfFilms(director1);
-
     }
 }
